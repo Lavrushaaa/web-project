@@ -1,302 +1,394 @@
-/* --- CSS-змінні (для легкого управління кольорами) --- */
-:root {
-    --primary-color: #64CCC5;     /* Бірюзовий акцент*/
-    --text-dark: #0CDCOC;         /* Майже чорний текст*/
-    --background-dark: #121212;   /* Темний фон*/
-    --text-light: #FFFFFF;        /* Білий текст*/
-    --light-grey-1: #F4F4F4;      /* Світло-сірий для тексту брендів */
-    --light-grey-2: #DFDFDF;      /* Світло-сірий для тексту в Hero Section */
-}
-
-/* --- Скидання стилів браузера та базові налаштування --- */
+/* Скидання стилів та базова підготовка */
 * {
-    margin: 0;                    /* Прибираємо зовнішні відступи */
-    padding: 0;                   /* Прибираємо внутрішні відступи */
-    box-sizing: border-box;       /* Розміри елементів включають padding та border */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Полегшує роботу з розмірами елементів */
 }
 
 html {
-    scroll-behavior: smooth;      /* Плавна прокрутка сторінки */
+    scroll-behavior: smooth; /* Плавне прокручування до якорів */
 }
 
 body {
-    font-family: 'DM Sans', sans-serif; /* Основний шрифт*/
-    font-weight: 400;             /* Товщина шрифту: нормальний*/
-    font-size: 18px;              /* Базовий розмір шрифту*/
-    color: var(--text-light);     /* Колір тексту: білий */
-    background-color: var(--background-dark); /* Колір фону сторінки: темно-сірий */
-    line-height: 1.6;             /* Міжрядковий інтервал для читабельності */
-    overflow-x: hidden;           /* Заборона горизонтальної прокрутки */
+    font-family: 'DM Sans', sans-serif;
+    background-color: #121212; /* Темний фон сайту */
+    color: #FFFFFF; /* Основний колір тексту */
+    line-height: 1.6;
+    overflow-x: hidden; /* Заборона горизонтального скролу */
 }
 
-/* --- Стилі для заголовків --- */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Roboto Serif', serif; /* Шрифт для заголовків*/
-    font-weight: 700;             /* Товщина шрифту: жирний*/
-    color: var(--text-light);     /* Колір заголовків: білий */
-    line-height: 1.2;             /* Міжрядковий інтервал */
-}
-
-/* Конкретні розміри для заголовків згідно Style Guide*/
-h1 { font-size: 80px; }
-h2 { font-size: 77px; }
-h3 { font-size: 64px; }
-h4 { font-size: 45px; }
-h5 { font-size: 30px; }
-h6 { font-size: 20px; }
-
-/* --- Стилі для посилань --- */
-a {
-    text-decoration: none;        /* Прибираємо підкреслення */
-    color: inherit;               /* Успадковує колір від батька */
-}
-
-/* --- Загальний контейнер для центрування контенту --- */
 .container {
-    max-width: 1200px;            /* Максимальна ширина вмісту */
-    margin: 0 auto;               /* Центрування по горизонталі */
-    padding: 0 20px;              /* Відступи по боках для мобільних */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* --- Клас для виділення тексту акцентним кольором --- */
-.highlight {
-    color: var(--primary-color);  /* Колір тексту: бірюзовий */
+/* --- Загальні стилі секцій --- */
+section {
+    padding: 80px 0;
 }
 
-/* --- Базові стилі для всіх кнопок --- */
+.section-subtitle {
+    font-size: 16px;
+    color: #64CCC5;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #FFFFFF;
+}
+
+/* --- Кнопки --- */
 .btn {
-    display: inline-flex;         /* Дозволяє центрувати контент та іконки */
-    align-items: center;          /* Центрує по вертикалі */
-    justify-content: center;      /* Центрує по горизонталі */
-    padding: 15px 30px;           /* Внутрішні відступи */
-    border-radius: 50px;          /* Дуже заокруглені кути */
-    font-weight: 600;             /* Товщина шрифту: напівжирний */
-    transition: 0.3s ease;        /* Плавні переходи для всіх властивостей */
-    white-space: nowrap;          /* Заборона переносу тексту */
+    padding: 0;
+    border-radius: 0;
+    font-weight: normal;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
 }
 
-/* Стилі для іконок всередині кнопок */
-.btn i {
-    margin-right: 8px;            /* Відступ справа від іконки */
-    font-size: 1.2em;             /* Розмір іконки */
+.btn-primary:hover,
+.btn-secondary:hover {
+    transform: scale(1.05); /* Легка анімація збільшення */
 }
 
-/* --- Стилі для первинної кнопки ("Get in touch") --- */
+.btn-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 .btn-primary {
-    background-color: var(--text-light); /* Фон: білий */
-    color: var(--text-dark);             /* Текст: темно-сірий */
-    border: 1px solid var(--text-light); /* Рамка: біла */
+    width: 150px;
 }
 
-.btn-primary:hover {                  /* Ефект при наведенні миші */
-    background-color: var(--primary-color); /* Фон: бірюзовий */
-    color: var(--text-light);            /* Текст: білий */
-    border-color: var(--primary-color);  /* Рамка: бірюзова */
-}
-
-/* --- Стилі для вторинної кнопки ("Start Your Free Trial") --- */
 .btn-secondary {
-    background-color: transparent;       /* Фон: прозорий */
-    color: var(--text-light);            /* Текст: білий */
-    border: 1px solid var(--text-light); /* Рамка: біла */
+    width: 200px;
 }
 
-.btn-secondary:hover {                /* Ефект при наведенні миші */
-    background-color: var(--primary-color); /* Фон: бірюзовий */
-    border-color: var(--primary-color);  /* Рамка: бірюзова */
+.highlight {
+    color: #64CCC5; /* Акцентний колір */
 }
 
-/* --- Стилі для хедера (шапки сайту) --- */
+/* ==================== HEADER ==================== */
 .header {
-    padding: 30px 0; /* Внутрішні відступи зверху/знизу для хедера */
-    position: relative; /* Робимо хедер контейнером для можливих абсолютно позиціонованих елементів */
-    z-index: 10; /* Розміщуємо хедер поверх інших елементів, якщо вони накладаються */
+    background-color: #1a1a1a;
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
 }
 
 .header .container {
-    display: flex; /* Робимо контейнер флекс-контейнером */
-    justify-content: space-between; /* Розтягуємо елементи по краях (лого зліва, кнопки справа) */
-    align-items: center; /* Вирівнюємо елементи по центру по вертикалі */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.header .logo {
-    font-size: 28px; /* Розмір шрифту для логотипу */
-    font-weight: 700; /* Жирний шрифт */
-    display: flex; /* Робимо логотип флекс-контейнером, щоб вирівняти іконку та текст */
-    align-items: center; /* Вирівнюємо по вертикалі */
-    gap: 8px; /* Відступ між іконкою та текстом логотипу */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-decoration: none;
 }
 
-.header .logo i {
-    color: var(--primary-color); /* Колір іконки логотипу */
+.site-logo-image {
+    height: 40px;
+    width: auto;
 }
 
 .main-nav ul {
-    list-style: none; /* Прибираємо маркери списку */
-    display: flex; /* Робимо список флекс-контейнером, щоб елементи були в ряд */
-    gap: 30px; /* Відступ між пунктами меню */
+    list-style: none;
+    display: flex;
+    gap: 30px;
 }
 
 .main-nav .nav-link {
-    font-weight: 500; /* Середня товщина шрифту для посилань */
-    padding: 5px 0; /* Невеликий відступ для клікабельної області */
-    position: relative; /* Для ефекту підкреслення */
+    font-weight: 500;
+    color: #FFFFFF;
+    text-decoration: none;
+    position: relative;
 }
 
-.main-nav .nav-link::after { /* Псевдоелемент для анімованого підкреслення активного пункту */
+/* Декоративна точка під активним пунктом меню */
+.main-nav .nav-link.active::after,
+.main-nav .nav-link:hover::after {
     content: '';
     position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0; /* Починаємо з нульової ширини */
-    height: 2px; /* Висота підкреслення */
-    background-color: var(--primary-color); /* Колір підкреслення */
-    transition: width 0.3s ease; /* Плавна анімація зміни ширини */
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: #64CCC5;
+    border-radius: 50%;
 }
 
-.main-nav .nav-link:hover::after,
-.main-nav .nav-link.active::after {
-    width: 100%; /* При наведенні або для активного пункту ширина 100% */
+.main-nav .nav-link.active {
+    color: #64CCC5;
 }
 
-/* --- Стилі для Hero Section --- */
+/* ==================== HERO SECTION ==================== */
 .hero-section {
-    padding: 80px 0 150px 0; /* Внутрішні відступи для Hero Section */
-    position: relative; /* Для позиціонування фонових елементів всередині секції */
-    overflow: hidden; /* Обрізаємо все, що виходить за межі секції */
+    background-image: url('images/Back.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 100px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
-.hero-content-wrapper {
-    display: flex; /* Розміщуємо текстовий блок та зображення поруч */
-    align-items: center; /* Вирівнюємо по вертикалі по центру */
-    justify-content: space-between; /* Розносимо по краях */
-    gap: 50px; /* Відступ між текстовим блоком та зображенням */
-    position: relative; /* Для z-index, щоб контент був поверх фонових кіл */
-    z-index: 5;
+/* Внутрішній контейнер з текстом та зображенням */
+.hero-main-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    margin-bottom: 80px;
+    width: 100%;
+    padding: 0 20px;
+    max-width: 1200px;
 }
 
-.hero-text-content {
-    flex: 1; /* Дозволяємо текстовому блоку займати доступний простір */
-    max-width: 550px; /* Обмежуємо ширину текстового блоку */
+.hero-content {
+    flex: 1;
+    max-width: 50%;
+    text-align: left;
 }
 
-.hero-text-content h1 {
-    margin-bottom: 20px; /* Відступ під заголовком */
-    font-weight: 600; /* Напівжирний для заголовка */
+.hero-title {
+    font-size: 52px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 20px;
 }
 
-.hero-text-content p {
-    font-size: 18px; /* Розмір тексту опису */
-    margin-bottom: 40px; /* Відступ під параграфом */
-    color: var(--light-grey-2); /* Колір тексту для опису */
-}
-
-.hero-text-content .btn-secondary {
-    font-size: 16px; /* Менший розмір шрифту для кнопки "Start Your Free Trial" */
-    padding: 12px 25px; /* Менші відступи для кнопки */
+.hero-description {
+    font-size: 18px;
+    color: #b0b0b0;
+    margin-bottom: 40px;
 }
 
 .hero-image-wrapper {
-    flex-shrink: 0; /* Забороняємо зображенню стискатися */
-    width: 500px; /* Фіксована ширина для обгортки зображення */
-    height: 500px; /* Фіксована висота */
-    border-radius: 50%; /* Робимо обгортку круглою */
-    overflow: hidden; /* Обрізаємо зображення по формі кола */
-    position: relative; /* Для позиціонування зображення всередині кола */
-    background-color: var(--background-dark); /* Фон, якщо зображення прозоре */
-    display: flex; /* Для центрування зображення */
+    flex: 1;
+    display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 0 5px var(--primary-color); /* Додаємо рамку для кола */
+    max-width: 50%;
+    width: 600px;
+    height: 600px;
 }
 
-.hero-image-wrapper img {
-    width: 100%; /* Зображення заповнює обгортку */
-    height: 100%; /* Зображення заповнює обгортку */
-    object-fit: cover; /* Обрізає зображення, щоб воно повністю заповнило контейнер, зберігаючи пропорції */
-    object-position: center top; /* Фокусуємо зображення по центру і вгорі, щоб люди були видно */
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-/* --- Стилі для секції "Trusted by Leading Brands" --- */
-.trusted-brands {
-    margin-top: 100px; /* Відступ зверху */
-    display: flex; /* Робимо флекс-контейнер */
-    align-items: center; /* Вирівнюємо по вертикалі */
-    gap: 40px; /* Відступ між "Trusted by..." та логотипами */
-    padding-left: calc(100px + 20px); /* Зсуваємо блок вправо, щоб вирівняти з основним контентом */
-                                    /* 100px - відступ, який відповідає зміщенню основного тексту */
-                                    /* 20px - padding контейнера */
+/* Trusted Brands Section — блок з логотипами брендів */
+.trusted-brands-section {
+    padding-top: 0;
+    width: 100%;
 }
 
-.trusted-text {
-    font-size: 16px; /* Розмір шрифту */
-    font-weight: 500; /* Середня товщина */
-    color: var(--light-grey-1); /* Колір тексту */
-    white-space: nowrap; /* Заборона переносу тексту */
+.trusted-brands-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.trusted-brands-title {
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-bottom: 30px;
+    font-weight: 500;
 }
 
 .brand-logos {
-    display: flex; /* Робимо флекс-контейнер для логотипів */
-    gap: 30px; /* Відступ між логотипами */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
 }
 
-/* --- Стилі для зображень логотипів брендів --- */
-.brand-logo-img {
-    height: 40px; /* Припустима висота для логотипів. Можеш скоригувати, дивлячись на Figma */
-    width: auto; /* Зберігаємо пропорції */
-    opacity: 0.7; /* Зробимо трохи прозорими, як на макеті */
-    filter: grayscale(100%) brightness(200%); /* Зробимо чорно-білими та світлішими, якщо потрібно */
-    transition: opacity 0.3s ease, filter 0.3s ease; /* Плавний перехід */
+.brand-logos img {
+    height: 30px;
+    width: auto;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+.brand-logos img:hover {
+    opacity: 1;
 }
 
-.brand-logo-img:hover {
-    opacity: 1; /* При наведенні стануть повністю видимими */
-    filter: grayscale(0%) brightness(100%); /* При наведенні стануть кольоровими */
-}
-
-/* --- Стилі для фонових елементів (сітка, кола) --- */
-.background-elements {
-    position: absolute; /* Абсолютне позиціонування відносно <body> */
-    top: 0;
+/* Декоративний елемент */
+.hero-ornament {
+    position: absolute;
+    top: 100px;
     left: 0;
+    width: 150px;
+    z-index: 0;
+    opacity: 0.8;
+}
+
+/* ==================== SERVICES SECTION ==================== */
+.services-section {
+    background-color: #FFFFFF;
+    color: #121212;
+    padding: 80px 0;
+}
+
+.services-section .section-subtitle,
+.services-section .section-title {
+    color: #121212;
+}
+
+.services-section .section-subtitle {
+    color: #64CCC5;
+}
+
+/* Сітка карток послуг */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    background-color: #f5f5f5;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card.black-bg {
+    background-color: #1a1a1a;
+    color: #FFFFFF;
+}
+
+.service-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #64CCC5;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+.service-icon img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+
+.service-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.service-description {
+    font-size: 16px;
+    color: #666;
+}
+.service-card.black-bg .service-description {
+    color: #b0b0b0;
+}
+
+/* ==================== ABOUT US SECTION ==================== */
+.about-us-section {
+    background-color: #121212;
+    padding: 80px 0;
+}
+
+.about-us-section .container {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+/* Блок з шарами для зображення */
+.about-us-image-stack {
+    flex: 1;
+    position: relative;
+    padding-left: 50px;
+    padding-top: 50px;
+}
+
+.about-us-image {
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Декоративні тіні під основним зображенням */
+.about-us-shadow-card {
+    position: absolute;
+    background-color: rgba(255,255,255,0.05);
+    border-radius: 10px;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Обрізаємо все, що виходить за межі */
-    z-index: 0; /* Розміщуємо під основним контентом */
+    z-index: 1;
 }
 
-/* Сітка у лівому верхньому куті */
-.grid-pattern {
-    position: absolute; /* Абсолютне позиціонування */
-    top: 50px; /* Відступ зверху */
-    left: 0; /* Притискаємо до лівого краю */
-    width: 150px; /* Ширина сітки */
-    height: 150px; /* Висота сітки */
-    background:
-        linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px), /* Вертикальні лінії */
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px); /* Горизонтальні лінії */
-    background-size: 20px 20px; /* Розмір клітинки сітки */
-    opacity: 0.3; /* Зробимо трохи прозорим */
+.about-us-shadow-card.shadow-1 {
+    top: 20px;
+    left: 20px;
+    transform: scale(0.95);
 }
 
-/* Велике коло */
-.circle-large {
-    position: absolute; /* Абсолютне позиціонування */
-    width: 600px; /* Діаметр кола */
-    height: 600px; /* Діаметр кола */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Тонка біла рамка */
-    border-radius: 50%; /* Робимо круглим */
-    top: 100px; /* Зсуваємо вниз */
-    right: 150px; /* Зсуваємо вправо */
+.about-us-shadow-card.shadow-2 {
+    top: 40px;
+    left: 40px;
+    transform: scale(0.90);
+    opacity: 0.5;
 }
 
-/* Мале коло (всередині великого) */
-.circle-small {
-    position: absolute; /* Абсолютне позиціонування */
-    width: 400px; /* Діаметр кола */
-    height: 400px; /* Діаметр кола */
-    border: 1px solid rgba(255, 255, 255, 0.05); /* Тонка, майже непомітна біла рамка */
-    border-radius: 50%; /* Робимо круглим */
-    top: 200px; /* Зсуваємо вниз */
-    right: 250px; /* Зсуваємо вправо */
+.about-us-content {
+    flex: 1;
+    text-align: left;
+}
+
+.about-us-description {
+    font-size: 16px;
+    color: #b0b0b0;
+    margin-bottom: 30px;
+}
+
+/* Сітка зі статистикою */
+.stats-grid {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 40px;
+}
+
+.stat-item {
+    text-align: left;
+}
+
+.stat-number {
+    font-size: 36px;
+    font-weight: bold;
+    color: #64CCC5;
 }
